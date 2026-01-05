@@ -1,8 +1,8 @@
 package com.luis.helpdesk.repositories;
 
-import com.luis.helpdesk.domain.Tecnico;
+import com.luis.helpdesk.domain.Chamado;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TecnicoRepository extends JpaRepository<Tecnico, Integer> {
+public interface ChamadoRepository extends JpaRepository<Chamado, Integer> {
 
 }
