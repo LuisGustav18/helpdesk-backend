@@ -1,22 +1,38 @@
 package com.luis.helpdesk.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.luis.helpdesk.domain.enums.Prioridade;
 import com.luis.helpdesk.domain.enums.Status;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Chamado {
+@Entity
+public class Chamado implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAbertura = LocalDate.now();
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento;
+
     private Prioridade prioridade;
     private Status status;
     private String titulo;
     private String obeservacoes;
 
+    @ManyToOne
+    @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     public Chamado(){
