@@ -1,5 +1,6 @@
 package com.luis.helpdesk.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.luis.helpdesk.domain.enums.Perfil;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -10,17 +11,18 @@ import java.util.List;
 @Entity
 public class Tecnico extends Pessoa{
 
+    @JsonIgnore
     @OneToMany(mappedBy = "tecnico")
     private List<Chamado> chamados = new ArrayList<>();
 
     public Tecnico(){
         super();
-        addPerfil(Perfil.TECNICO);
+        addPerfil(Perfil.CLIENTE);
     }
 
     public Tecnico(Integer id, String nome, String cpf, String email, String senha) {
         super(id, nome, cpf, email, senha);
-        addPerfil(Perfil.TECNICO);
+        addPerfil(Perfil.CLIENTE);
     }
 
     public List<Chamado> getChamados() {
