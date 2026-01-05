@@ -16,7 +16,7 @@ public abstract class Pessoa implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int id;
+    protected Integer id;
     protected String nome;
 
     @Column(unique = true)
@@ -37,7 +37,7 @@ public abstract class Pessoa implements Serializable {
         addPerfil(Perfil.CLIENTE);
     }
 
-    public Pessoa(int id, String nome, String cpf, String email, String senha) {
+    public Pessoa(Integer id, String nome, String cpf, String email, String senha) {
         addPerfil(Perfil.CLIENTE);
         this.id = id;
         this.nome = nome;
