@@ -46,7 +46,7 @@ public abstract class Pessoa implements Serializable {
         this.senha = senha;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
