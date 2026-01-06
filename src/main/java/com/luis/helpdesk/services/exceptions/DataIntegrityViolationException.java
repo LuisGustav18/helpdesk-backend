@@ -1,12 +1,12 @@
 package com.luis.helpdesk.services.exceptions;
 
-public class ObjectNotFoundException extends RuntimeException{
+public class DataIntegrityViolationException extends RuntimeException{
 
-    public ObjectNotFoundException(String msg, Throwable cause){
+    public DataIntegrityViolationException(String msg, Throwable cause){
         super(msg, cause);
     }
 
-    public ObjectNotFoundException(String msg){
+    public DataIntegrityViolationException(String msg){
         super(msg);
     }
 }
