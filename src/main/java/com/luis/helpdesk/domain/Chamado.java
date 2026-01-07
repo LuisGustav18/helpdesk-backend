@@ -1,6 +1,7 @@
 package com.luis.helpdesk.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.luis.helpdesk.domain.dtos.ChamadoDTO;
 import com.luis.helpdesk.domain.enums.Prioridade;
 import com.luis.helpdesk.domain.enums.Status;
 import jakarta.persistence.*;
@@ -48,6 +49,7 @@ public class Chamado implements Serializable {
         this.tecnico = tecnico;
         this.cliente = cliente;
     }
+
 
     public Integer getId() {
         return id;
