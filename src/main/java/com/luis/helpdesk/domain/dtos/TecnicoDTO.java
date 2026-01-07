@@ -3,6 +3,7 @@ package com.luis.helpdesk.domain.dtos;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.luis.helpdesk.domain.Tecnico;
 import com.luis.helpdesk.domain.enums.Perfil;
+import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -13,9 +14,13 @@ import java.util.stream.Collectors;
 public class TecnicoDTO implements Serializable {
 
     protected Integer id;
+    @NotNull(message = "O campo NOME é require")
     protected String nome;
+    @NotNull(message = "O campo CPF é require")
     protected String cpf;
+    @NotNull(message = "O campo EMAIL é require")
     protected String email;
+    @NotNull(message = "O campo SENHA é require")
     protected String senha;
     protected Set<Integer> perfis = new HashSet<>();
 
