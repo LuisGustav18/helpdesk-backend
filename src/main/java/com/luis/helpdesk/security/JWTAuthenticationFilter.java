@@ -17,14 +17,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 // Filtro do Spring Security, intercepta requisição de login /login
-public class JWTAuthenticatuonFilter extends UsernamePasswordAuthenticationFilter {
+public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     // Executa a autenticação chama ( UserDetailsService, PasswordEncoder )
     private AuthenticationManager authenticationManager;
     // Cria o token, define o tempo de expiração
     private JWTUtil jwtUtil;
 
-    public JWTAuthenticatuonFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil) {
+    public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil) {
         super();
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;

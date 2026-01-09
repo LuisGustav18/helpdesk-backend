@@ -1,11 +1,13 @@
 package com.luis.helpdesk.config;
 
-import com.luis.helpdesk.security.JWTAuthenticatuonFilter;
+import com.luis.helpdesk.security.JWTAuthenticationFilter;
+import com.luis.helpdesk.security.JWTAuthorizationFilter;
 import com.luis.helpdesk.security.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -19,6 +21,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -40,8 +43,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         }
         http.cors().and().csrf().disable(); // permite outros domínios tenham acesso a API e desativamos a segurança de requisição
 
+        http.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService)) ;
+
         // Intercepta o login, valida o usuário e senha, gera token, e retorna o token
-        http.addFilter(new JWTAuthenticatuonFilter(authenticationManager(), jwtUtil));
+        http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
 
         // Permite acessarmos o caminho sem token
         http.authorizeRequests().antMatchers(PUBLIC_MATCHES)
