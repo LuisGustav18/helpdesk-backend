@@ -1,11 +1,10 @@
 package com.luis.helpdesk.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.luis.helpdesk.domain.dtos.ChamadoDTO;
 import com.luis.helpdesk.domain.enums.Prioridade;
 import com.luis.helpdesk.domain.enums.Status;
-import jakarta.persistence.*;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;

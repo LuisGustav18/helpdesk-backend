@@ -1,8 +1,5 @@
 package com.luis.helpdesk.resources.exceptions;
 
-import jakarta.validation.Valid;
-import org.hibernate.validator.internal.metadata.facets.Validatable;
-
 import java.util.ArrayList;
 import java.util.List;
 

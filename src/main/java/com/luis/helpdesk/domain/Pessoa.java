@@ -2,9 +2,9 @@ package com.luis.helpdesk.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.luis.helpdesk.domain.enums.Perfil;
-import jakarta.persistence.*;
 import org.hibernate.validator.constraints.br.CPF;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;

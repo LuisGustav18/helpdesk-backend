@@ -2,9 +2,8 @@ package com.luis.helpdesk.domain.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.luis.helpdesk.domain.Chamado;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
