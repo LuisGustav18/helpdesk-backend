@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+// Implementação de UserDetails para o Spring Security entender que é uma classe de segurança
 public class UserSS implements UserDetails {
 
     private Integer id;
@@ -20,6 +21,7 @@ public class UserSS implements UserDetails {
         this.id = id;
         this.email = email;
         this.senha = senha;
+        // Transformamos em GrantedAuthority "ROLE_ADMIN" pois Spring Security não trabalha com enum
         this.authoritie = perfis.stream().map(x -> new SimpleGrantedAuthority(x.getDescricao())).collect(Collectors.toSet());
     }
 
@@ -29,7 +31,7 @@ public class UserSS implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authoritie;
+        return authoritie; // Verifica as permiões
     }
 
     @Override
