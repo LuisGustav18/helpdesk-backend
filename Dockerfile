@@ -1,7 +1,7 @@
 FROM ubuntu:latest AS build
 
 RUN apt-get update
-RUN apt-get install openjdk-11-jdk -y
+FROM eclipse-temurin:11-jre
 COPY . .
 
 RUN apt-get install maven -y
