@@ -1,16 +1,18 @@
-FROM ubuntu:latest AS build
+FROM maven:3.9.6-eclipse-temurin-11 AS build
 
-RUN apt-get update
+WORKDIR /app
+
+COPY pom.xml .
+COPY src ./src
+
+RUN mvn clean package -DskipTests
+
 FROM eclipse-temurin:11-jre
-COPY . .
 
-RUN apt-get install maven -y
-RUN mvn clean install -DskipTests
-
-FROM openjdk:11-jdk-slim
+WORKDIR /app
 
 EXPOSE 8080
 
-COPY --from=build /target/helpdesk-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/helpdesk-0.0.1-SNAPSHOT.jar app.jar
 
-ENTRYPOINT [ "java", "-jar", "app.jar" ]
+ENTRYPOINT ["java", "-jar", "app.jar"]
