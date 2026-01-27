@@ -66,7 +66,7 @@ public class ChamadoService {
         chamado.setPrioridade(Prioridade.toEnum(obj.getPrioridade()));
         chamado.setStatus(Status.toEnum(obj.getStatus()));
         chamado.setTitulo(obj.getTitulo());
-        chamado.setObeservacoes(obj.getObeservacoes());
+        chamado.setObservacoes(obj.getObservacoes());
         return chamado;
     }
 }
